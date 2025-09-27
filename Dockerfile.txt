@@ -1,0 +1,25 @@
+# Use official Python slim image for smaller size
+FROM python:3.9-slim
+
+# Set working directory
+WORKDIR /app
+
+# Copy requirements file
+COPY requirements.txt .
+
+# Install system dependencies and Python packages
+RUN apt-get update && apt-get install -y \
+    build-essential \
+    && pip install --no-cache-dir -r requirements.txt \
+    && python -m spacy download en_core_web_sm \
+    && apt-get clean \
+    && rm -rf /var/lib/apt/lists/*
+
+# Copy application code
+COPY resume_tailorer_app.py .
+
+# Expose Streamlit port
+EXPOSE 8501
+
+# Command to run the Streamlit app
+CMD ["streamlit", "run", "resume_tailorer_app.py", "--server.port=8501", "--server.address=0.0.0.0"]
