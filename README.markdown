@@ -20,8 +20,8 @@ A Streamlit web app that tailors resumes to job descriptions (JDs) using AI, gen
 1. **Clone the Repository**:
 
    ```bash
-   git clone https://github.com/<your-username>/ai-resume-tailorer.git
-   cd ai-resume-tailorer
+   git clone https://github.com/MoominRasool/Resume-ATS-Optimizer.git
+   cd Resume-ATS-Optimizer
    ```
 
 2. **Build the Docker Image**:
